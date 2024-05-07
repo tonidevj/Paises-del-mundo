@@ -19,6 +19,7 @@ body{
 
 .title{
   color: white;
+  white-space: nowrap;
 }
 
 /* para la imagen de fondo */
@@ -50,3 +51,4 @@ body{
     width: 2rem;
     height: 2rem;
   }
+
