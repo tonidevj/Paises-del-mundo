@@ -33,3 +33,19 @@ body{
   height: 100%;
   z-index: -1;
   }  
+/* centro el titulo y los imputs */
+
+#info-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+  /* seccion de los input y boton de buscar */
+
+  .buscador-btn{
+    width: 2rem;
+    height: 2rem;
+  }
