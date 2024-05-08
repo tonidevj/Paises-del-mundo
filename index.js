@@ -1,94 +1,41 @@
- const buscador = document.querySelector('#buscador');
+const contenedorPaises = document.getElementById('paises-lista');
 
+const cargarPaises = async () => {
+    try {
+        const respuesta = await fetch('https://restcountries.com/v3.1/all');
 
- const cargarPaises = async() => {
-     try{
-         const respuesta = await fetch('https://restcountries.com/v3.1/all');
-           //si la respuesta es correcta
-           if(respuesta.status === 200){
-             const datos = await respuesta.json()
-            
-             for (let i = 0; i < datos.length; i++) {
-                const pais = datos[i];
-                const capital = pais.capital[0] || 'no posee';
-                const nombreComun = datos[i].name.common;
+        if (respuesta.status === 200) {
+            const datos = await respuesta.json();
+
+            datos.slice(0,10).forEach(pais => {
+                const nombreComun = pais.name.common;
                 const bandera = pais.flags.png;
-                const habitantes = pais.population.toLocaleString();
-                
-                console.log(`País: ${nombreComun}`);
-                console.log(`Bandera: ${bandera}`);
-                console.log(`Habitantes: ${habitantes}`);
-                console.log(`Capital: ${capital}`);
-                console.log('---');}
 
+                const paisHTML = `
+                    <li class="paises-item">
+                        <div id="paises-img">
+                            <img class="paises-img-info" src="${bandera}" alt="">
+                        </div>
+                        <div id="paises-info">
+                            <p class="nombre-pais">${nombreComun}</p>
+                        </div>
+                    </li>
+                `;
 
+                contenedorPaises.innerHTML += paisHTML;
+            });
 
-             console.log(datos);
-           } else if(respuesta.status === 401){
-             console.log('mal');
-           }else if(respuesta.status === 404){
-             console.log('el pais no se encuentra disponible');
-           }else{
-             console.log('error inesperado');
-           }
+        } else if (respuesta.status === 401) {
+            console.log('Error 401: No autorizado');
+        } else if (respuesta.status === 404) {
+            console.log('Error 404: El país no se encuentra disponible');
+        } else {
+            console.log('Error inesperado');
+        }
 
-     }catch(error){
-         console.log(error);
-     }
- }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
 
- cargarPaises();
-
-
-
-// const buscador = document.querySelector('#buscador');
-
-// const cargarPaises = async () => {
-//     try {
-//         const respuesta = await fetch('https://restcountries.com/v3.1/all');
-//         console.log(respuesta);
-
-//         // Si la respuesta es correcta
-//         if (respuesta.ok) {
-//             const datos = await respuesta.json();
-//             console.log(datos);
-//             mostrarOpciones(datos);
-//         } else if (respuesta.status === 401) {
-//             console.log('Error 401: No autorizado');
-//         } else if (respuesta.status === 404) {
-//             console.log('Error 404: El país no se encuentra disponible');
-//         } else {
-//             console.log('Error inesperado');
-//         }
-//     } catch (error) {
-//         console.log('Error:', error.message);
-//     }
-// }
-
-// const mostrarOpciones = (datos) => {
-//     const datalist = document.createElement('datalist');
-//     datalist.setAttribute('id', 'listaPaises');
-
-//     datos.forEach(pais => {
-//         const option = document.createElement('option');
-//         option.textContent = pais.name.common;
-//         datalist.appendChild(option);
-//     });
-
-//     buscador.setAttribute('list', 'listaPaises'); // Asociar el datalist con el input
-//     document.body.appendChild(datalist); // Agregar el datalist al DOM
-// }
-
-// cargarPaises();
-
-
-
-// async obtenPaises() {
-//     try {
-//         let res = await fetch('https://restcountries.com/v3.1/all');
-//         let listaDePaises = await res.json();
-//         console.log(listaDePaises);
-//     } catch(error) {
-//         console.log(error);
-//     }
-// }
+cargarPaises();
