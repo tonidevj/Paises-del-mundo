@@ -1,5 +1,19 @@
 const contenedorPaises = document.getElementById('paises-lista');
 
+document.addEventListener('keyup', e =>{
+
+  if(e.target.matches('#buscador')){
+    document.querySelectorAll(".paises-item").forEach( countries =>{
+      countries.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+      ?countries.classList.remove('filtro')
+      :countries.classList.add('filtro')
+    })
+  }
+ 
+} )
+
+
+
 const cargarPaises = async () => {
     try {
         const respuesta = await fetch('https://restcountries.com/v3.1/all');
@@ -7,7 +21,7 @@ const cargarPaises = async () => {
         if (respuesta.status === 200) {
             const datos = await respuesta.json();
 
-            datos.slice(0,10).forEach(pais => {
+            datos.forEach(pais => {
                 const nombreComun = pais.name.common;
                 const bandera = pais.flags.png;
 
