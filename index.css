@@ -168,15 +168,16 @@ select{
   .paises-itemenes{
     background-color: #06c2007b;
     border-radius: 0.5rem;
-    height: 40rem;
+    height: 55rem;
     display: flex;
     flex-direction: column;
     width: 100%;
-    transform: scale(1);
     transition: all 0.3s ease-in;
+    transform: scale(1);
     backdrop-filter: blur(10px);
-    margin-bottom: 3rem;
+    margin-bottom: 3rem;    
   }
+
   .paises-itemenes:hover{
     transform: scale(1.04);
 
@@ -188,6 +189,10 @@ select{
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  gap: 1rem;
 }
 
 
@@ -214,6 +219,13 @@ select{
 
   }}
 
+  @media (min-width: 768px){
+.paises-itemenes{
+  height: 40rem;
+}
+
+  }
+
   @media (min-width: 1024px){
     .paises-item{
       width: 20%;
@@ -222,10 +234,17 @@ select{
     #paises-lista{
       gap: 3rem;
     }
+    .paises-itemenes{
+      height: 40rem;
+    }
+
 
     }
 
     @media (min-width: 1440px){
+      p{
+        font-size: 2rem;
+      }
     #buscador{
       height: 3rem;
       width: 20rem;
@@ -243,6 +262,9 @@ select{
       }
 
       @media (min-width: 2560px){
+        p{
+          font-size: 3.8rem;
+        }
         #buscador{
           height: 4rem;
           width: 20rem;
