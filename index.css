@@ -23,14 +23,24 @@ body{
   text-shadow: 2px 2px 4px black
 }
 
+#info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+.info{
+  font-size: 2rem;
+  color: #000000;
+  justify-content: center;
+  align-items: center
+}
 /* para la imagen de fondo */
+
 
 
   .font-img{
       position: fixed;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
       width: 100%;
       height: 100%;
       z-index: -1;
@@ -49,6 +59,10 @@ body{
 }
 
 /* al input */
+
+input{
+  color: #ffffff;
+}
 #buscador{
   height: 2rem;
   border-radius: 0.5rem;
@@ -87,6 +101,7 @@ select{
   max-width: 80rem;
   margin: 0 auto;
   width: 100%;
+  gap: 1rem;
 }
 
 #paises-lista{
@@ -98,6 +113,7 @@ select{
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 10px;
   
 }
 
@@ -124,11 +140,55 @@ select{
 #paises-info{
   padding: 1rem;
   color: #e5e7eb;
-  font-size: 2rem;
+  font-size: 1.6rem;
   display: flex;
   justify-content: center;
-  text-shadow: 2px 2px 4px black
+  flex-direction: column;
+  text-shadow: 2px 2px 4px black;
+  font-family: "Ubuntu Sans", sans-serif;
   }
+
+/* para la seccion de informacion al darle click */
+
+  .nombre-pais-info{
+    font-size: 0;
+    width: 0;
+    height: 0;
+  }
+  .nombre-pais-title{
+  width: 3rem;
+  height: 3rem;
+  }
+
+.tiempo{
+  display: flex;
+  flex-direction: row;
+}
+  
+  .paises-itemenes{
+    background-color: #06c2007b;
+    border-radius: 0.5rem;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transform: scale(1);
+    transition: all 0.3s ease-in;
+    backdrop-filter: blur(10px);
+    margin-bottom: 3rem;
+  }
+  .paises-itemenes:hover{
+    transform: scale(1.04);
+
+  }  
+
+#paises-information{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
 
 
 /* para el filtro buscador */
@@ -147,7 +207,12 @@ select{
     flex-direction: row;
     flex-wrap: wrap;
   }
-  }
+  .paises-itemenes{
+    width: 70%;
+    flex-direction: row;
+    height: 30rem;
+
+  }}
 
   @media (min-width: 1024px){
     .paises-item{
@@ -174,7 +239,7 @@ select{
       #paises-lista{
         gap: 3rem;
       }
-  
+
       }
 
       @media (min-width: 2560px){
@@ -203,5 +268,9 @@ select{
             width: 13rem;
             font-size: 2rem;
           
+          }
+          .paises-itemenes{
+            width: 100%;
+            height: 80rem;
           }
           }
