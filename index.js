@@ -113,8 +113,8 @@ searchInput.addEventListener('input', async e => {
                                         listNormal.classList.toggle('paises-item');
                                         const ulNoInfo = document.querySelector('#paises-lista');
                                         ulNoInfo.appendChild(listNormal);
-                                // Imprime el <li> completo
-                                        // Aquí puedes realizar cualquier acción que necesites con el elemento <li>
                                     };
                                 });
 });
+
+// disculpe la demora
